@@ -15,6 +15,8 @@ module.exports = MinimapTitles =
     @subscriptions.add atom.commands.add 'atom-workspace', 'minimap-titles:convert': => @convert()
     @subscriptions.add atom.commands.add 'atom-workspace', 'minimap-titles:border': => @border()
 
+    # Default font to 'ANSI Shadow' if font not set
+    atom.config.set 'atom-minimap-titles.font', 'ANSI Shadow' unless atom.config.get 'atom-minimap-titles.font'
   deactivate: ->
     @subscriptions.dispose()
 
@@ -25,7 +27,7 @@ module.exports = MinimapTitles =
     if editor = atom.workspace.getActiveTextEditor()
 
       figlet = require 'figlet'
-      font = 'ANSI Shadow'
+      font = atom.config.get 'custom-minimap-titles.font'
 
       # get file extension
       fileName = editor.getTitle()
