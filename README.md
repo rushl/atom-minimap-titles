@@ -56,6 +56,13 @@ To create comment borders around text to help distinguish sections in the minima
 - Select _Packages_ -> _Minimap Titles_ -> _Toggle Comment Borders_ from the main menu
 - Run the Convert command on your text as detailed above
 
+To set a custom font, set `atom-minimap-titles.font` in your atom config file, as such:
+```
+"atom-minimap-titles":
+  font: "Colossal"
+```
+See existing fonts in the [figlet font database](http://www.figlet.org/fontdb.cgi).
+
 ## Credits
 Based on the following packages:
 - [atom-figletify](https://github.com/robatron/atom-figletify)
