@@ -27,7 +27,7 @@ module.exports = MinimapTitles =
     if editor = atom.workspace.getActiveTextEditor()
 
       figlet = require 'figlet'
-      font = atom.config.get 'custom-minimap-titles.font'
+      font = atom.config.get 'atom-minimap-titles.font'
 
       # get file extension
       fileName = editor.getTitle()
