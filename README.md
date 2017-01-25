@@ -10,6 +10,7 @@ The chosen figlet font (ANSI Shadow) is perfect for minimap visualization. Comme
 - md
 - php
 - vb
+- njk
 
 Select some text to convert something like this:
 

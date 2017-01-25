@@ -83,6 +83,12 @@ module.exports = MinimapTitles =
                   commentStart = '<!--' + Array(preferredLineLength-6).join('#') + '\n'
                   commentEnd = '\n' + Array(preferredLineLength-5).join('#') + '-->'
 
+                when 'njk'
+                  if not @borderOn
+                    preferredLineLength = 6
+                  commentStart = '{#' + Array(preferredLineLength-6).join('#') + '\n'
+                  commentEnd = '\n' + Array(preferredLineLength-5).join('#') + '#}'
+
                 when 'php'
                   if not @borderOn
                     preferredLineLength = 3
