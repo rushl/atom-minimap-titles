@@ -106,6 +106,13 @@ module.exports = MinimapTitles =
                   art = art.replace /^/, "' "
                   art = art.replace /\n/g, "\n' "
 
+								when 'tex','cls'
+									commentStart = ''
+									commentEnd = ''
+									# add '% ' to the beginning of each line
+									art = art.replace /^/, "% "
+									art = art.replace /\n/g, "\n% "
+
                 else
                   if not @borderOn
                     preferredLineLength = 2
