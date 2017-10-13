@@ -3,7 +3,7 @@
 
 The chosen figlet font (ANSI Shadow) is perfect for minimap visualization. Commenting supports several file extensions:
 - js
-- sh
+- sh, bash
 - yml, yaml
 - coffee
 - html
@@ -13,6 +13,8 @@ The chosen figlet font (ANSI Shadow) is perfect for minimap visualization. Comme
 - njk
 - py
 - tex, cls
+
+Files with no extension will be treated as Shell scripts.
 
 Select some text to convert something like this:
 
