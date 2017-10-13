@@ -60,7 +60,7 @@ module.exports = MinimapTitles =
               art = art.replace /\s+$/gm, ""
 
               switch extension
-                when 'sh','yml','yaml','py',''
+                when 'bash','sh','yml','yaml','py',''
                   if not @borderOn
                     preferredLineLength = 0
                   # add '# ' to the beginning of each line
