@@ -2,10 +2,10 @@
 
 module.exports = MinimapTitles =
   subscriptions: null
-  borderOn: false
+
+  borderOn: true
   activate: (state) ->
 
-    #@borderOn = false
     # Events subscribed to in atom's system can be
     # easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
@@ -16,11 +16,15 @@ module.exports = MinimapTitles =
 
     # Default font to 'ANSI Shadow' if font not set
     atom.config.set 'atom-minimap-titles.font', 'ANSI Shadow' unless atom.config.get 'atom-minimap-titles.font'
+    atom.config.set 'atom-minimap-titles.borderOn', true unless atom.config.get 'atom-minimap-titles.borderOn'
+    @borderOn = atom.config.get 'atom-minimap-titles.borderOn'
+
   deactivate: ->
     @subscriptions.dispose()
 
   border: ->
     @borderOn = not @borderOn
+    atom.config.set 'atom-minimap-titles.borderOn', @borderOn
 
   convert: ->
     if editor = atom.workspace.getActiveTextEditor()
