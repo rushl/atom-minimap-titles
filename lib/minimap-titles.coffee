@@ -3,7 +3,6 @@
 module.exports = MinimapTitles =
   subscriptions: null
   borderOn: false
-  preferredLineLength: 0
   activate: (state) ->
 
     #@borderOn = false
@@ -36,7 +35,7 @@ module.exports = MinimapTitles =
 
       # get multi-cursor selections
       selections = editor.getSelections()
-      @preferredLineLength = atom.config.get('editor.preferredLineLength')
+      preferredLineLength = atom.config.get('editor.preferredLineLength')
       for selection in selections
         do (selection, @borderOn, @preferredLineLength) ->
           if selection.isEmpty()
