@@ -25,7 +25,7 @@ hello world
 into something like this:
 
 ```
-# ██   ██ ███████ ██      ██       ██████      ██     ██  ██████  ██████  ██      ██████  
+# ██   ██ ███████ ██      ██       ██████      ██     ██  ██████  ██████  ██      ██████
 # ██   ██ ██      ██      ██      ██    ██     ██     ██ ██    ██ ██   ██ ██      ██   ██
 # ███████ █████   ██      ██      ██    ██     ██  █  ██ ██    ██ ██████  ██      ██   ██
 # ██   ██ ██      ██      ██      ██    ██     ██ ███ ██ ██    ██ ██   ██ ██      ██   ██
@@ -60,10 +60,12 @@ To convert text, select the text you wish to convert, and do **any** of the foll
 To create comment borders around text to help distinguish sections in the minimap do the following:
 - Select _Packages_ -> _Minimap Titles_ -> _Toggle Comment Borders_ from the main menu
 - Run the Convert command on your text as detailed above
+- This state is persisted to `atom-minimap-titles.borderOn`
 
 To set a custom font, set `atom-minimap-titles.font` in your atom config file, as such:
 ```
 "atom-minimap-titles":
+  borderOn: true
   font: "Colossal"
 ```
 See existing fonts in the [figlet font database](http://www.figlet.org/fontdb.cgi).
