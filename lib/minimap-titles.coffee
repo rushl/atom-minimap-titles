@@ -123,7 +123,7 @@ module.exports = MinimapTitles =
                   commentEnd = '\n' + Array(preferredLineLength-2).join('*') + '*/\n'
 
               selection.insertText(
-                "#{commentStart+art+commentEnd}\n",
+                "#{commentStart+art+commentEnd}",
                 {
                   select: true,
                   autoIndent: true
