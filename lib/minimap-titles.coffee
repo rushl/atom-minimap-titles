@@ -95,12 +95,11 @@ module.exports = MinimapTitles =
                 when 'php'
                   if not @borderOn
                     preferredLineLength = 3
-                  commentStart = '/**' + Array(preferredLineLength-3).join('*') + '\n
-                  \t * Block comment\n
-                  \t *\n
-                  \t * @param type\n
-                  \t * @return void\n'
-                  commentEnd = '\n' + Array(preferredLineLength-2).join('*') + '*/\n\t'
+                  commentStart = '/**' + Array(preferredLineLength-3).join('*') + '\n'
+                  # add '* ' to the beginning of each line
+                  art = art.replace /^/, "* "
+                  art = art.replace /\n/g, "\n* "
+                  commentEnd = '\n' + Array(preferredLineLength-2).join('*') + '*/\n'
 
                 when 'vb','vbs'
                   commentStart = ''
