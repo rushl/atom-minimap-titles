@@ -2,10 +2,11 @@
 
 module.exports = MinimapTitles =
   subscriptions: null
-
-  borderOn: true
+  borderOn: false
+  preferredLineLength: 0
   activate: (state) ->
 
+    #@borderOn = false
     # Events subscribed to in atom's system can be
     # easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
@@ -16,15 +17,11 @@ module.exports = MinimapTitles =
 
     # Default font to 'ANSI Shadow' if font not set
     atom.config.set 'atom-minimap-titles.font', 'ANSI Shadow' unless atom.config.get 'atom-minimap-titles.font'
-    atom.config.set 'atom-minimap-titles.borderOn', true unless atom.config.get 'atom-minimap-titles.borderOn'
-    @borderOn = atom.config.get 'atom-minimap-titles.borderOn'
-
   deactivate: ->
     @subscriptions.dispose()
 
   border: ->
     @borderOn = not @borderOn
-    atom.config.set 'atom-minimap-titles.borderOn', @borderOn
 
   convert: ->
     if editor = atom.workspace.getActiveTextEditor()
@@ -39,7 +36,7 @@ module.exports = MinimapTitles =
 
       # get multi-cursor selections
       selections = editor.getSelections()
-      preferredLineLength = atom.config.get('editor.preferredLineLength')
+      @preferredLineLength = atom.config.get('editor.preferredLineLength')
       for selection in selections
         do (selection, @borderOn, @preferredLineLength) ->
           if selection.isEmpty()
@@ -95,11 +92,12 @@ module.exports = MinimapTitles =
                 when 'php'
                   if not @borderOn
                     preferredLineLength = 3
-                  commentStart = '/**' + Array(preferredLineLength-3).join('*') + '\n'
-                  # add '* ' to the beginning of each line
-                  art = art.replace /^/, "* "
-                  art = art.replace /\n/g, "\n* "
-                  commentEnd = '\n' + Array(preferredLineLength-2).join('*') + '*/\n'
+                  commentStart = '/**' + Array(preferredLineLength-3).join('*') + '\n
+                  \t * Block comment\n
+                  \t *\n
+                  \t * @param type\n
+                  \t * @return void\n'
+                  commentEnd = '\n' + Array(preferredLineLength-2).join('*') + '*/\n\t'
 
                 when 'vb','vbs'
                   commentStart = ''
@@ -122,7 +120,7 @@ module.exports = MinimapTitles =
                   commentEnd = '\n' + Array(preferredLineLength-2).join('*') + '*/\n'
 
               selection.insertText(
-                "#{commentStart+art+commentEnd}",
+                "#{commentStart+art+commentEnd}\n",
                 {
                   select: true,
                   autoIndent: true
