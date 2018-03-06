@@ -13,6 +13,7 @@ The chosen figlet font (ANSI Shadow) is perfect for minimap visualization. Comme
 - njk
 - py
 - tex, cls
+- sql
 
 Files with no extension will be treated as Shell scripts.
 
